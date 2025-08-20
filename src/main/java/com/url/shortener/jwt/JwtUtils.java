@@ -1,4 +1,4 @@
-package com.url.shortener.security.jwt;
+package com.url.shortener.jwt;
 
 import com.url.shortener.service.UserDetailsImpl;
 import io.jsonwebtoken.Claims;
@@ -7,12 +7,13 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 import java.util.stream.Collectors;
-
+@Component
 public class JwtUtils {
     //Authorization: Bearer <JWT_TOKEN>
 
@@ -31,7 +32,7 @@ public class JwtUtils {
         return null;
     }
 
-    public String genrateToken(UserDetailsImpl userDetails) {
+    public String generateToken(UserDetailsImpl userDetails) {
         String username = userDetails.getUsername();
         String roles = userDetails.getAuthorities().stream()
                 .map(authority -> authority.getAuthority())
