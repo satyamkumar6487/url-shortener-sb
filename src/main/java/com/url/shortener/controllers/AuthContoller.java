@@ -44,7 +44,7 @@ public class AuthContoller {
         user.setUsername(registerRequest.getUsername());
         user.setPassword(registerRequest.getPassword());
        user.setEmail(registerRequest.getEmail());
-        user.setRole("Role_USER");
+        user.setRole("ROLE_USER");
 
         userService.registerUser(user);
         return ResponseEntity.ok("user Register successfully");

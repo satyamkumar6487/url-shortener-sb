@@ -66,8 +66,10 @@ public AuthenticationManager authenticationManager(AuthenticationConfiguration a
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/urls/shorten").hasRole("USER")
                         .requestMatchers("/api/urls/**").authenticated()
                         .requestMatchers("/{shortUrl}").permitAll()
+
                         .anyRequest().authenticated()
 
 
